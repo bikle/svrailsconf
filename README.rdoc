@@ -324,10 +324,9 @@ So, here is some information about how I have translated Gherkin into Ruby for t
 If you are an experienced programmer, you will see that I am using code which makes API calls dependent on these APIs and technologies:
   
 Nokogiri[http://www.google.com/search?q=nokogiri]
-
-  Webrat
-  RSpec
-  Regular Expressions
-  CSS
-  XPath
+Webrat[http://www.google.com/search?q=Webrat]
+RSpec[http://www.google.com/search?q=RSpec]
+Regular Expressions[http://www.google.com/search?q=Regular+Expressions]
+CSS[http://www.google.com/search?q=CSS]
+XPath[http://www.google.com/search?q=XPath]
 
