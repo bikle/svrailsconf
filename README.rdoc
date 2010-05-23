@@ -91,5 +91,6 @@ Then, start it up:
 
 And you should see something like this:
 
-svrailsconf.png[http://github.com/bikle/svrailsconf/blob/master/public/images/svrailsconf.png]
+  http://github.com/bikle/svrailsconf/blob/master/public/images/svrailsconf.png
+
 
