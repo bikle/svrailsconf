@@ -42,3 +42,11 @@ First, install these gems:
   Sun May 23 13:41 /pt/b/sinatra/svrailsconf maco$ 
   Sun May 23 13:41 /pt/b/sinatra/svrailsconf maco$ 
   Sun May 23 13:41 /pt/b/sinatra/svrailsconf maco$ 
+
+Next, obtain svrailsconf from github:
+
+  cd /tmp
+  git clone git@github.com:bikle/svrailsconf.git
+
+Then, start it up:
+
