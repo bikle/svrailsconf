@@ -322,8 +322,9 @@ So, here is some information about how I have translated Gherkin into Ruby for t
   Sun May 23 15:49 /tmp/svrailsconf maco$ 
     
 If you are an experienced programmer, you will see that I am using code which makes API calls dependent on these APIs and technologies:
+  
+Nokogiri[http://www.google.com/search?q=nokogiri]
 
-  Nokogiri[http://www.google.com/search?q=nokogiri]
   Webrat
   RSpec
   Regular Expressions
