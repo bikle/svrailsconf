@@ -165,3 +165,168 @@ If you cannot get it to run on your laptop, perhaps you can deploy it to heroku.
   Sun May 23 14:26 /tmp/svrailsconf maco$ 
   
 
+If you want to learn how to write Cucumber tests for Sinatra Apps, perhaps svrailsconf will be useful.
+I demonstrate the running of Cucumber tests which have already been written.
+
+
+First I check that I have the Cucumber gem installed:
+
+  Sun May 23 15:48 /tmp/svrailsconf maco$ 
+  Sun May 23 15:48 /tmp/svrailsconf maco$ 
+  Sun May 23 15:48 /tmp/svrailsconf maco$ gem list cucumber
+  
+  *** LOCAL GEMS ***
+  
+  cucumber (0.7.3)
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+
+Next, I check that the cucumber command is in my PATH:
+
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ which cucumber
+  /Users/maco/.rvm/gems/ruby-1.8.7-p174%sinatra/bin/cucumber
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+
+Cucumber runs tests controlled by Gherkin which is a language (written by product managers hopefully) inside files with the suffix "feature".
+A file named "hello.feature" is listed below:
+
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ ll features/
+  total 8
+  drwxr-xr-x   5 maco  wheel  170 May 23 13:46 ./
+  drwxr-xr-x  11 maco  wheel  374 May 23 15:47 ../
+  -rw-r--r--   1 maco  wheel  346 May 23 13:46 hello.feature
+  drwxr-xr-x   3 maco  wheel  102 May 23 13:46 step_definitions/
+  drwxr-xr-x   3 maco  wheel  102 May 23 13:46 support/
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ cat features/hello.feature 
+  Feature: See Homepage
+    In order to verify loading of homepage
+    As Dan
+    I want to see the homepage
+  
+    Scenario: Load the homepage
+      Given That I am "Dan"
+      When I am on the homepage
+      Then I should see "SV Rails Conf"
+      And I should see the png: svtrain.png
+      And On LHS I should see links: "Home Program Venue Speakers Registration"
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+
+We can see that the language of Gherkin is very simple when compared to a computer language like Ruby or JavaScript.
+The author of Cucumber intends that you ask the Product Manager of your app to write the Gherkin inside of "feature" files.
+
+After I wrote hello.feature, I wanted it to "drive" my app.  I see this as like a robot connecting to the app and my hello.feature file controls the robot.
+The way this is implemented is the Gherkin syntax in hello.feature needs to get translated into Ruby syntax.
+Once the translation is done, the Ruby syntax is the thing which drives the app.
+
+For example I could have this Gherkin command:
+
+  When I am on the homepage
+
+As a Cucumber "expert" I know that the above command needs to get translated to this Ruby command:
+
+  @rspns= get "/"
+
+So a key idea there is that if you want to use Cucumber to test your apps you need to know how to translate Gherkin into Ruby.
+One thing which helps you is that you are not writing low-level Ruby; you are writing Ruby which makes calls to APIs which are powerful yet simple.
+
+Another idea to understand is that translation from Gherkin to Ruby requires that you have a mechanism to map each Gherkin statement to some Ruby code.
+
+You can see how this is done if you study this file:
+
+http://github.com/bikle/svrailsconf/blob/master/features/step_definitions/some_steps.rb
+
+The above file suggests that if we want to map this Gherkin command:
+
+  When I am on the homepage
+
+To this Ruby command:
+
+  @rspns= get "/"
+
+Then we need to have some syntax like this in some_steps.rb:
+
+  When /^I am on the homepage$/ do
+    @rspns= get "/"
+  end
+
+As you gain experience with Cucumber, Gherkin, and the API calls resident within the features/step_definitions/ files,
+your Ruby syntax will become more thorough at testing your app.
+
+You can see that by studying the Ruby syntax which is derived from the Gherkin command:
+
+   When I am on the homepage
+
+So, here is some information about how I have translated Gherkin into Ruby for this app:
+
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ ll features/step_definitions/
+  total 8
+  drwxr-xr-x  3 maco  wheel   102 May 23 13:46 ./
+  drwxr-xr-x  5 maco  wheel   170 May 23 13:46 ../
+  -rw-r--r--  1 maco  wheel  1238 May 23 13:46 some_steps.rb
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ cat features/step_definitions/some_steps.rb 
+  
+  Given /^That I am "([^\"]*)"$/ do |arg1|
+    # Anyone will make this test pass
+  end
+  
+  When /^I am on the homepage$/ do
+    # Here is the Nokogiri way:
+    @rspns= get "/"
+    @ndoc= Nokogiri::HTML(@rspns.body)
+    # Here is the webrat way:
+    visit "/"
+  end
+  
+  Then /^I should see "([^\"]*)"$/ do |arg1|
+    # @ndoc.css("h1")[0].content.should match /Haml on Sinatra Example/
+    @ndoc.css("h1")[0].content.should match(Regexp.new(arg1))
+  
+    # Here is the webrat way:
+    last_response.should contain(arg1)
+    last_response.should have_selector("div#header h1")
+    last_response.should have_xpath("//body/table/tr/td/div[@id='header']/h1")
+  end
+  
+  Then /^I should see the png: svtrain\.png$/ do
+    # Here is the Nokogiri way:
+    @ndoc.xpath("//img[@id='svtrain']/@src")[0].value.should== "/images/svtrain.png"
+    # Here is the webrat way:
+    last_response.should have_selector("body table tr td img#svtrain")
+    last_response.should have_xpath("//body/table/tr/td/img[@id='svtrain'][@src='/images/svtrain.png']")
+  end
+  
+  Then /^On LHS I should see links: "([^\"]*)"$/ do |arg1|
+    links_from_dot_feature= arg1.split
+    lhs_links_from_page= @ndoc.css("table tr#tr_two td#td_lhs a").map{ |ae| ae.content}
+    lhs_links_from_page.sort.should== links_from_dot_feature.sort
+  end
+  
+  
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+  Sun May 23 15:49 /tmp/svrailsconf maco$ 
+    
+If you are an experienced programmer, you will see that I am using code which makes API calls dependent on these APIs and technologies:
+
+  Nokogiri
+  Webrat
+  RSpec
+  Regular Expressions
+  CSS
+  XPath
+
