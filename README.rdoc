@@ -1,0 +1,3 @@
+= svrailsconf
+
+svrailsconf is a Sinatra App which demonstrates how to attach Cucumber tests to a Sinatra App.
