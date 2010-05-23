@@ -106,7 +106,6 @@ If you cannot get it to run on your laptop, perhaps you can deploy it to heroku.
   Sun May 23 14:23 /tmp/svrailsconf maco$ heroku create svrc2010_0523
    !   Name must start with a letter and can only contain letters, numbers, and dashes
   Sun May 23 14:24 /tmp/svrailsconf maco$ heroku create svrc20100523
-  heroku create svrc20100523
   Creating svrc20100523..... done
   Created http://svrc20100523.heroku.com/ | git@heroku.com:svrc20100523.git
   Git remote heroku added
@@ -118,7 +117,6 @@ If you cannot get it to run on your laptop, perhaps you can deploy it to heroku.
   Sun May 23 14:24 /tmp/svrailsconf maco$ 
   Sun May 23 14:24 /tmp/svrailsconf maco$ 
   Sun May 23 14:24 /tmp/svrailsconf maco$ git push heroku master
-  git push heroku master
   Counting objects: 32, done.
   Compressing objects: 100% (24/24), done.
   Writing objects: 100% (32/32), 29.99 KiB, done.
@@ -141,7 +139,6 @@ If you cannot get it to run on your laptop, perhaps you can deploy it to heroku.
   Sun May 23 14:24 /tmp/svrailsconf maco$ 
   Sun May 23 14:24 /tmp/svrailsconf maco$ 
   Sun May 23 14:24 /tmp/svrailsconf maco$ curl http://svrc20100523.heroku.com -o /tmp/my.html
-  curl http://svrc20100523.heroku.com -o /tmp/my.html
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                    Dload  Upload   Total   Spent    Left  Speed
   100  1101  100  1101    0     0   3567      0 --:--:-- --:--:-- --:--:--     0
@@ -156,7 +153,6 @@ If you cannot get it to run on your laptop, perhaps you can deploy it to heroku.
   Sun May 23 14:25 /tmp/svrailsconf maco$ 
   Sun May 23 14:25 /tmp/svrailsconf maco$ 
   Sun May 23 14:25 /tmp/svrailsconf maco$ head -6 /tmp/my.html 
-  head -6 /tmp/my.html 
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
   <html lang='en-US' xml:lang='en-US' xmlns='http://www.w3.org/1999/xhtml'>
     <head>
