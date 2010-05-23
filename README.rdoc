@@ -91,5 +91,5 @@ Then, start it up:
 
 And you should see something like this:
 
-<a href="http://github.com/bikle/svrailsconf/blob/master/public/images/svrailsconf.png">http://github.com/bikle/svrailsconf/blob/master/public/images/svrailsconf.png</a>
+  "http://github.com/bikle/svrailsconf/blob/master/public/images/svrailsconf.png"
 
