@@ -93,4 +93,79 @@ And you should see something like this:
 
   http://github.com/bikle/svrailsconf/blob/master/public/images/svrailsconf.png
 
+If you cannot get it to run on your laptop, perhaps you can deploy it to heroku.  Here is a demonstration of that idea:
+
+  Sun May 23 14:21 /tmp/svrailsconf maco$ 
+  Sun May 23 14:21 /tmp/svrailsconf maco$ 
+  Sun May 23 14:22 /tmp/svrailsconf maco$ ssh-add -D
+  All identities removed.
+  Sun May 23 14:22 /tmp/svrailsconf maco$ 
+  Sun May 23 14:22 /tmp/svrailsconf maco$ ssh-add /pt/b/sinatra/ssh_key.txt
+  Identity added: /pt/b/sinatra/ssh_key.txt (/pt/b/sinatra/ssh_key.txt)
+  Sun May 23 14:23 /tmp/svrailsconf maco$ 
+  Sun May 23 14:23 /tmp/svrailsconf maco$ heroku create svrc2010_0523
+   !   Name must start with a letter and can only contain letters, numbers, and dashes
+  Sun May 23 14:24 /tmp/svrailsconf maco$ heroku create svrc20100523
+  heroku create svrc20100523
+  Creating svrc20100523..... done
+  Created http://svrc20100523.heroku.com/ | git@heroku.com:svrc20100523.git
+  Git remote heroku added
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ git push heroku master
+  git push heroku master
+  Counting objects: 32, done.
+  Compressing objects: 100% (24/24), done.
+  Writing objects: 100% (32/32), 29.99 KiB, done.
+  Total 32 (delta 2), reused 32 (delta 2)
+  
+  -----> Heroku receiving push
+  -----> Sinatra app detected
+         Compiled slug size is 32K
+  -----> Launching..... done
+         http://svrc20100523.heroku.com deployed to Heroku
+  
+  To git@heroku.com:svrc20100523.git
+   * [new branch]      master -> master
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  
+  
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ 
+  Sun May 23 14:24 /tmp/svrailsconf maco$ curl http://svrc20100523.heroku.com -o /tmp/my.html
+  curl http://svrc20100523.heroku.com -o /tmp/my.html
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+  100  1101  100  1101    0     0   3567      0 --:--:-- --:--:-- --:--:--     0
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  
+  
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  Sun May 23 14:25 /tmp/svrailsconf maco$ 
+  Sun May 23 14:25 /tmp/svrailsconf maco$ head -6 /tmp/my.html 
+  head -6 /tmp/my.html 
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html lang='en-US' xml:lang='en-US' xmlns='http://www.w3.org/1999/xhtml'>
+    <head>
+      <title>SV Ruby Conf 2010</title>
+    </head>
+    <body>
+  Sun May 23 14:26 /tmp/svrailsconf maco$ 
+  Sun May 23 14:26 /tmp/svrailsconf maco$ 
+  Sun May 23 14:26 /tmp/svrailsconf maco$ 
+  Sun May 23 14:26 /tmp/svrailsconf maco$ 
+  
 
