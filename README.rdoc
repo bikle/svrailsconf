@@ -335,3 +335,34 @@ CSS[http://www.google.com/search?q=CSS]
 
 XPath[http://www.google.com/search?q=XPath]
 
+So, now that I have described my understanding of Cucumber, how do we actually run a Cucumber test?
+The screen-dump below demonstrates how to run a Cucumber test:
+
+  Sun May 23 17:16 /tmp/svrailsconf maco$ 
+  Sun May 23 17:16 /tmp/svrailsconf maco$ gem list cucumber
+  
+  *** LOCAL GEMS ***
+  
+  cucumber (0.7.3)
+  Sun May 23 17:16 /tmp/svrailsconf maco$ 
+  Sun May 23 17:16 /tmp/svrailsconf maco$ which cucumber
+  /Users/maco/.rvm/gems/ruby-1.8.7-p174%sinatra/bin/cucumber
+  Sun May 23 17:17 /tmp/svrailsconf maco$ 
+  Sun May 23 17:17 /tmp/svrailsconf maco$ 
+  Sun May 23 17:17 /tmp/svrailsconf maco$ cucumber features/hello.feature 
+  Feature: See Homepage
+    In order to verify loading of homepage
+    As Dan
+    I want to see the homepage
+  
+    Scenario: Load the homepage                                                 # features/hello.feature:6
+      Given That I am "Dan"                                                     # features/step_definitions/some_steps.rb:2
+      When I am on the homepage                                                 # features/step_definitions/some_steps.rb:6
+      Then I should see "SV Rails Conf"                                         # features/step_definitions/some_steps.rb:14
+      And I should see the png: svtrain.png                                     # features/step_definitions/some_steps.rb:24
+      And On LHS I should see links: "Home Program Venue Speakers Registration" # features/step_definitions/some_steps.rb:33
+  
+  1 scenario (1 passed)
+  5 steps (5 passed)
+  0m0.052s
+  Sun May 23 17:17 /tmp/svrailsconf maco$ 

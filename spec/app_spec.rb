@@ -1,19 +1,25 @@
-require 'app'  # <-- your sinatra app
+require 'rubygems'
 require 'spec'
 require 'rack/test'
+require 'ruby-debug'
+require 'nokogiri'
+
+require "#{File.dirname(__FILE__)}/../app.rb" # <-- your sinatra app
 
 set :environment, :test
 
-describe 'My Hello App' do
+describe 'The app.rb App' do
   include Rack::Test::Methods
 
   def app
     Sinatra::Application
   end
 
-  it "says hello" do
+  it "says SV Rails Conf" do
     get '/'
     last_response.should be_ok
-    last_response.body.should == 'Hello World'
+    ndoc= Nokogiri::HTML(last_response.body)
+    ndoc.css("h1")[0].content.should match /SV Rails Conf/
   end
 end
+
